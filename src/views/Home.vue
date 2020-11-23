@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HiitCreate title="Welcome to Your Vue.js App"/>
+    <HiitCreate title="Welcome to HIIT timer app by charubiniak.pl"/>
   </div>
 </template>
 
