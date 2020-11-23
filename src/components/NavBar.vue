@@ -1,6 +1,6 @@
 <template>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="navbar-brand" id="navbarsExampleDefault">
         <router-link to="/">Home</router-link>
       </div>  
     </nav>
