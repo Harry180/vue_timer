@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="container">
     <HiitCreate title="Welcome to HIIT timer app by charubiniak.pl"/>
   </div>
 </template>
