@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-dark bg-dark">
       <div class="navbar-brand" id="navbarsExampleDefault">
-        <router-link to="/">Home</router-link>
+        <router-link class="nav-item" to="/">Home</router-link>
       </div>  
     </nav>
 </template>
