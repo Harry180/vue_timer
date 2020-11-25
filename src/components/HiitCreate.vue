@@ -26,58 +26,59 @@
         </div>
         <div class="card">
             <div class="card-body">
-            <h3 class="card-title">High Intensity Interval</h3>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Name:</span>
+                <h3 class="card-title">High Intensity Interval</h3>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Name:</span>
+                    </div>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    v-model="timer.highName" />
                 </div>
-                <input 
-                type="text" 
-                class="form-control" 
-                v-model="timer.highName" />
-            </div>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Duration (in seconds):</span>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Duration (in seconds):</span>
+                    </div>
+                    <input 
+                    type="number" 
+                    class="form-control" 
+                    v-model="timer.highDuration" />
                 </div>
-                <input 
-                type="number" 
-                class="form-control" 
-                v-model="timer.highDuration" />
-            </div>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <!-- put select here -->
-                </div> 
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <!-- put select here -->
+                    </div> 
+                </div>
             </div>
         </div>
         <div class="card">
             <div class="card-body">
-            <h3 class="card-title">Low Intensity Interval</h3>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Name:</span>
+                <h3 class="card-title">Low Intensity Interval</h3>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Name:</span>
+                    </div>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    v-model="timer.lowName" />
                 </div>
-                <input 
-                type="text" 
-                class="form-control" 
-                v-model="timer.lowName" />
-            </div>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Duration (in seconds):</span>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Duration (in seconds):</span>
+                    </div>
+                    <input 
+                    type="number" 
+                    class="form-control" 
+                    v-model="timer.lowDuration" />
                 </div>
-                <input 
-                type="number" 
-                class="form-control" 
-                v-model="timer.lowDuration" />
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <!-- put select here -->
+                    </div> 
+                </div>
             </div>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <!-- put select here -->
-                </div> 
-            </div>
-        </div>
         </div>
         <div class="card">
             <div class="card-body">
@@ -135,6 +136,12 @@
                 </div>
             </div>
         </div>
+        <div class="fixed-bottom bg-light">
+            <div class="row">
+                <div class="col-lg-12">
+                    <button class="btn btn-outline-success float-right margin-right20" type="button">Create</button>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -171,5 +178,10 @@ export default class HiitCreate extends Vue {
 </script>
 
 <style scoped>
-
+.card {
+    margin-bottom: 20px;
+}
+.margin-right20{
+    margin-right: 20px;
+}
 </style>
