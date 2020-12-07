@@ -34,7 +34,7 @@
                     <input 
                     type="text" 
                     class="form-control" 
-                    v-model="timer.highName" />
+                    v-model="timer.high.name" />
                 </div>
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -43,14 +43,14 @@
                     <input 
                     type="number" 
                     class="form-control" 
-                    v-model="timer.highDuration" />
+                    v-model="timer.high.duration" />
                 </div>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Color:</span>
                     </div>
-                    <select v-model="timer.highColor" class="custom-select">
-                        <option v-for="option in timer.colorOptions" v-bind:key="timer.highName + option.text" v-bind:value="option.value">
+                    <select v-model="timer.high.color" class="custom-select">
+                        <option v-for="option in timer.colorOptions" v-bind:key="timer.high.name + option.text" v-bind:value="option.value">
                             {{option.text}}
                         </option>
                     </select>
@@ -67,7 +67,7 @@
                     <input 
                     type="text" 
                     class="form-control" 
-                    v-model="timer.lowName" />
+                    v-model="timer.low.name" />
                 </div>
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -76,14 +76,14 @@
                     <input 
                     type="number" 
                     class="form-control" 
-                    v-model="timer.lowDuration" />
+                    v-model="timer.low.duration" />
                 </div>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Color:</span>
                     </div>
-                    <select v-model="timer.lowColor" class="custom-select">
-                        <option v-for="option in timer.colorOptions" v-bind:key="timer.lowName + option.text" v-bind:value="option.value">
+                    <select v-model="timer.low.color" class="custom-select">
+                        <option v-for="option in timer.colorOptions" v-bind:key="timer.low.name + option.text" v-bind:value="option.value">
                             {{option.text}}
                         </option>
                     </select>
@@ -100,7 +100,7 @@
                     <input 
                     type="text" 
                     class="form-control" 
-                    v-model="timer.warmupName" />
+                    v-model="timer.warmup.name" />
                 </div>
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -109,21 +109,21 @@
                     <input 
                     type="number" 
                     class="form-control" 
-                    v-model="timer.warmupDuration" />
+                    v-model="timer.warmup.duration" />
                 </div>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Color:</span>
                     </div>
-                    <select v-model="timer.warmupColor" class="custom-select">
-                        <option v-for="option in timer.colorOptions" v-bind:key="timer.warmupName + option.text" v-bind:value="option.value">
+                    <select v-model="timer.warmup.color" class="custom-select">
+                        <option v-for="option in timer.colorOptions" v-bind:key="timer.warmup.name + option.text" v-bind:value="option.value">
                             {{option.text}}
                         </option>
                     </select>
                 </div>
             </div>
         </div>
-        <div class="card">
+        <div class="card mb-5">
             <div class="card-body">
                 <h3 class="card-title">Cooldown</h3>
                 <div class="input-group">
@@ -133,7 +133,7 @@
                     <input 
                     type="text" 
                     class="form-control" 
-                    v-model="timer.cooldownName" />
+                    v-model="timer.cooldown.name" />
                 </div>
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -142,14 +142,14 @@
                     <input 
                     type="number" 
                     class="form-control" 
-                    v-model="timer.cooldownDuration" />
+                    v-model="timer.cooldown.duration" />
                 </div>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Color:</span>
                     </div>
-                    <select v-model="timer.cooldownColor" class="custom-select">
-                        <option v-for="option in timer.colorOptions" v-bind:key="timer.cooldownName + option.text" v-bind:value="option.value">
+                    <select v-model="timer.cooldown.color" class="custom-select">
+                        <option v-for="option in timer.colorOptions" v-bind:key="timer.cooldown.name + option.text" v-bind:value="option.value">
                             {{option.text}}
                         </option>
                     </select>
@@ -158,7 +158,12 @@
         </div>
         <div class="fixed-bottom bg-light">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-sm-12 col-md-10">
+                    <ul class="preview-list">
+                        <li class="preview-list-item" v-for="index in timer.numberOfSets" :key="index" :style="{backgroundColor: timer.warmupColor}">&nbsp;</li>
+                    </ul>
+                </div>
+                <div class="col-sm-12 col-md-2">
                     <button class="btn btn-outline-success float-right margin-right20" type="button">Create</button>
                 </div>
             </div>
@@ -178,21 +183,28 @@ export default class HiitCreate extends Vue {
         name:'HIIT Timer',
         numberOfSets: 6,
         
-        highName: 'High Intensity',
-        highDuration: 30,
-        highColor: 'red',
+        high:{
+            name: 'High Intensity',
+            duration: 30,
+            color: 'red',
+        },
+        low: {
+            name: 'Low Intensity',
+            duration: 30,
+            color: 'green'
+        },
         
-        lowName: 'Low Intensity',
-        lowDuration: 30,
-        lowColor: 'green',
-
-        warmupName: 'Warmup',
-        warmupDuration: 180,
-        warmupColor: 'yellow',
-
-        cooldownName: 'Cooldown',
-        cooldownDuration: 180,
-        cooldownColor: 'yellow',
+        warmup: {
+            name: 'Warmup',
+            duration: 180,
+            color: 'yellow'
+        },
+        
+        cooldown: {
+            name: 'Cooldown',
+            duration: 180,
+            color: 'yellow'
+        },
         colorOptions: [
             {text: 'Green', value: 'green'},
             {text: "Red", value: 'red'},
@@ -216,5 +228,18 @@ export default class HiitCreate extends Vue {
 }
 .margin-right20{
     margin-right: 20px;
+}
+.preview-list {
+    border-radius: 4px;
+    margin: 0 0 15px;
+    padding: 0;
+    list-style-type: none;
+}
+.preview-list-item{
+    display: inline-block;
+    height: 34px;
+    text-indent: -9999px;
+    border-right: 1px solid #fff;
+    width: 10px;
 }
 </style>
