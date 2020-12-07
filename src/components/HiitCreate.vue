@@ -47,9 +47,14 @@
                 </div>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <!-- put select here -->
-                    </div> 
-                </div>
+                        <span class="input-group-text">Color:</span>
+                    </div>
+                    <select v-model="timer.highColor" class="custom-select">
+                        <option v-for="option in timer.colorOptions" v-bind:key="timer.highName + option.text" v-bind:value="option.value">
+                            {{option.text}}
+                        </option>
+                    </select>
+            </div>
             </div>
         </div>
         <div class="card">
@@ -75,8 +80,13 @@
                 </div>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <!-- put select here -->
-                    </div> 
+                        <span class="input-group-text">Color:</span>
+                    </div>
+                    <select v-model="timer.lowColor" class="custom-select">
+                        <option v-for="option in timer.colorOptions" v-bind:key="timer.lowName + option.text" v-bind:value="option.value">
+                            {{option.text}}
+                        </option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -103,8 +113,13 @@
                 </div>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <!-- put select here -->
-                    </div> 
+                        <span class="input-group-text">Color:</span>
+                    </div>
+                    <select v-model="timer.warmupColor" class="custom-select">
+                        <option v-for="option in timer.colorOptions" v-bind:key="timer.warmupName + option.text" v-bind:value="option.value">
+                            {{option.text}}
+                        </option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -131,8 +146,13 @@
                 </div>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <!-- put select here -->
-                    </div> 
+                        <span class="input-group-text">Color:</span>
+                    </div>
+                    <select v-model="timer.cooldownColor" class="custom-select">
+                        <option v-for="option in timer.colorOptions" v-bind:key="timer.cooldownName + option.text" v-bind:value="option.value">
+                            {{option.text}}
+                        </option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -152,21 +172,34 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class HiitCreate extends Vue {
     @Prop() private title!: string;
+    
+
     timer = { 
         name:'HIIT Timer',
         numberOfSets: 6,
         
         highName: 'High Intensity',
         highDuration: 30,
+        highColor: 'red',
         
         lowName: 'Low Intensity',
         lowDuration: 30,
+        lowColor: 'green',
 
         warmupName: 'Warmup',
         warmupDuration: 180,
+        warmupColor: 'yellow',
 
         cooldownName: 'Cooldown',
-        cooldownDuration: 180
+        cooldownDuration: 180,
+        cooldownColor: 'yellow',
+        colorOptions: [
+            {text: 'Green', value: 'green'},
+            {text: "Red", value: 'red'},
+            {text: 'Yellow', value: 'yellow'},
+            {text: 'Magenta', value:'rgb(230, 46, 95)'},
+            {text: 'Deep purple', value:'rgb(133, 57, 191)'}
+        ]
     };
 
     setup () {
